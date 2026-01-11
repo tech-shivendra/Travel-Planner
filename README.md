@@ -4,7 +4,7 @@
 
 ## 🔗 Live Preview
 
-👉 https://mohdfahad0408.github.io/Travel-Planner/
+👉 https://tech-shivendra.github.io/Travel-Planner
 
 ## 📖 About the Project
 
