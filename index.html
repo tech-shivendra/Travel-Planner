@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="public/logo/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+
+    <header class=" nav">
+        <div><img src="public/logo/logo.png" alt="logo" class="logo"></div>
+        <div class="navs">
+            <span class="margin"><a href="#home">Home</a></span>
+            <span class="margin"><a href="#about-us">About Us</a></span>
+            <span class="margin"><a href="#travel">Travel Spots</a></span>
+            <span class="margin"><a href="">Blogs</a></span>
+            <span class="margin"><a href="">Tour Planner</a></span>
+            <span class="margin"><a href="#footer">Contact Us</a></span>
+        </div>
+        <div>
+            <span class="bi-search icon"></span>
+            <span class="bi-person icon"></span>
+            <span class="button">Book Now</span>
+        </div>
+    </header>
+    <div class="bg" id="home">
+        <div class="hero ">
+            <div class="titles">
+                <h1 class="hero-title">TRAVEL</h1>
+                <h6 class="subtitle0 word-reveal-js">where your heart takes you!</h6>
+            </div>
+            <div class="search-glass fade delay-2">
+                <a href="map/map.html" class="search-btn">
+                    Find Now
+                </a>
+
+            </div>
+        </div>
+    </div>
+    <div class="parallax-separator"></div>
+
+    <section class="about-section" id="about-us">
+        <div class="about-wrap">
+
+
+            <div class="about-text fade">
+                <span class="subtitle">about us :</span>
+
+                <h2 class="about-title">
+                    WHERE PASSION <br>
+                    MEETS ADVENTURE, <br>
+                    FUELING YOUR <br>
+                    WANDERLUST DESIRES
+                </h2>
+
+                <button class="about-btn" onclick="show()">Learn More</button>
+            </div>
+
+
+            
+
+
+            <div class="about-image fade delay-1">
+                <img src="public/background/travel.jpeg" alt="traveler">
+            </div>
+
+        </div>
+         <section class="values-section" >
+                    <h2 class="subtitle">What We Stand For</h2>
+
+                    <div class="values-grid">
+
+                        <div class="value-card">
+                            <i class="bi bi-compass"></i>
+                            <h4>Smart Planning</h4>
+                            <p>
+                                Every journey begins with clarity. We design tools that help
+                                travelers make confident, informed decisions.
+                            </p>
+                        </div>
+
+                        <div class="value-card">
+                            <i class="bi bi-globe"></i>
+                            <h4>Global Perspective</h4>
+                            <p>
+                                Built for explorers across the world, with insights that adapt
+                                to destinations, cultures, and conditions.
+                            </p>
+                        </div>
+
+                        <div class="value-card">
+                            <i class="bi bi-heart"></i>
+                            <h4>User First</h4>
+                            <p>
+                                Simplicity, comfort, and experience guide every feature we
+                                create—technology that feels human.
+                            </p>
+                        </div>
+
+                    </div>
+                </section>
+    </section>
+
+    
+    <div class="parallax-separator"></div>
+    <section class="section">
+        <header class="header-title">
+            <span class="subtitle">tour list :</span>
+            <h1>AWESOME TOURS IN INDIA</h1>
+        </header>
+
+        <div id="tourSlider" class="tour-container">
+
+
+            <div class="card">
+                <img src="public/tourlist/01.avif" alt="Goa Beach">
+                <div class="card-content">
+                    <div class="place">Sunny Beaches of Goa</div>
+                    <div class="location">Goa, India</div>
+
+                    <div class="details">
+                        <span>5 Days • 4 Person</span>
+                        <span class="price">₹45,000</span>
+                    </div>
+
+                    <a href="https://www.google.com/maps/place/Goa/@15.3501487,73.6767542,10z/data=!3m1!4b1!4m6!3m5!1s0x3bbfba106336b741:0xeaf887ff62f34092!8m2!3d15.2993265!4d74.123996!16zL20vMDFjMW5t?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3M0gBUAM%3D"
+                        target="_blank">View Tour</a>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img src="public/tourlist/02.avif" alt="Manali">
+                <div class="card-content">
+                    <div class="place">Snowy Hills of Manali</div>
+                    <div class="location">Himachal Pradesh, India</div>
+
+                    <div class="details">
+                        <span>6 Days • 6 Person</span>
+                        <span class="price">₹55,000</span>
+                    </div>
+
+                    <a href="https://manali-tour.example.com" target="_blank">View Tour</a>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img src="public/tourlist/03.avif" alt="Kashmir Valley">
+                <div class="card-content">
+                    <div class="place">Paradise of Kashmir</div>
+                    <div class="location">Srinagar, India</div>
+
+                    <div class="details">
+                        <span>7 Days • 5 Person</span>
+                        <span class="price">₹60,000</span>
+                    </div>
+
+                    <a href="https://kashmir-tour.example.com" target="_blank">View Tour</a>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img src="public/tourlist/04.avif" alt="Jaipur">
+                <div class="card-content">
+                    <div class="place">Royal Palaces of Jaipur</div>
+                    <div class="location">Rajasthan, India</div>
+
+                    <div class="details">
+                        <span>4 Days • 4 Person</span>
+                        <span class="price">₹35,000</span>
+                    </div>
+
+                    <a href="https://jaipur-tour.example.com" target="_blank">View Tour</a>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img src="public/tourlist/05.avif" alt="Kerala Backwaters">
+                <div class="card-content">
+                    <div class="place">Backwaters of Kerala</div>
+                    <div class="location">Alleppey, India</div>
+
+                    <div class="details">
+                        <span>5 Days • 4 Person</span>
+                        <span class="price">₹48,000</span>
+                    </div>
+
+                    <a href="https://kerala-tour.example.com" target="_blank">View Tour</a>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img src="public/tourlist/06.avif" alt="Rishikesh">
+                <div class="card-content">
+                    <div class="place">Adventure in Rishikesh</div>
+                    <div class="location">Uttarakhand, India</div>
+
+                    <div class="details">
+                        <span>3 Days • 6 Person</span>
+                        <span class="price">₹25,000</span>
+                    </div>
+
+                    <a href="https://rishikesh-tour.example.com" target="_blank">View Tour</a>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img src="public/tourlist/07.avif" alt="Ladakh">
+                <div class="card-content">
+                    <div class="place">Mystic Mountains of Ladakh</div>
+                    <div class="location">Leh Ladakh, India</div>
+
+                    <div class="details">
+                        <span>7 Days • 6 Person</span>
+                        <span class="price">₹75,000</span>
+                    </div>
+
+                    <a href="https://ladakh-tour.example.com" target="_blank">View Tour</a>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img src="public/tourlist/08.webp" alt="Andaman">
+                <div class="card-content">
+                    <div class="place">Islands of Andaman</div>
+                    <div class="location">Andaman & Nicobar, India</div>
+
+                    <div class="details">
+                        <span>5 Days • 4 Person</span>
+                        <span class="price">₹58,000</span>
+                    </div>
+
+                    <a href="https://andaman-tour.example.com" target="_blank">View Tour</a>
+                </div>
+            </div>
+
+        </div>
+
+
+        <a href="#" class="explore-btn">Explore All</a>
+    </section>
+
+    <section class="container" id="travel">
+        <header class="header-title">
+            <span class="subtitle">destinations :</span>
+            <h1>BEST TRAVEL PLACES</h1>
+        </header>
+
+        <div class="destination-row">
+            <div class="text-col">
+                <h2>NETHERLANDS</h2>
+                <p>Discover a land of artistic masterpieces, iconic windmills, and innovative design. A journey through
+                    the heart of Europe’s most colorful landscape.</p>
+            </div>
+            <div class="image-col">
+                <div class="img-container">
+                    <img src="public/destination/netherland.jpg" alt="Netherlands">
+                </div>
+            </div>
+        </div>
+
+        <div class="destination-row reverse">
+            <div class="text-col">
+                <h2>GREECE</h2>
+                <p>Where azure waters meet ancient marble. Experience the birthplace of philosophy and the most stunning
+                    sunsets in the Mediterranean.</p>
+            </div>
+            <div class="image-col">
+                <div class="img-container">
+                    <img src="public/destination/greece.jpg" alt="Greece">
+                </div>
+            </div>
+        </div>
+
+        <div class="destination-row">
+            <div class="text-col">
+                <h2>ITALY</h2>
+                <p>From the rolling hills of Tuscany to the historic streets of Rome. Italy is a feast for the senses,
+                    blending history, art, and world-class cuisine.</p>
+            </div>
+            <div class="image-col">
+                <div class="img-container">
+                    <img src="public/destination/italy.jpg" alt="Italy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="testimonials">
+        <header class="header-title">
+            <span class="subtitle">testimonials :</span>
+            <h1>WHAT PEOPLE SAY ABOUT US!</h1>
+        </header>
+
+
+        <div class="card-container">
+            <div class="card1">
+                <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+                <p class="testimonial-text">Our family trip to Manali was amazing. Everything was perfectly managed!</p>
+                <div class="user-info">
+                    <img src="public/avatars/as.svg" alt="Aarav">
+                    <div>
+                        <h4>Aarav Sharma</h4>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card1">
+                <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+                <p class="testimonial-text">The houseboat in Alleppey was a dream. Best hospitality I've ever
+                    experienced.</p>
+                <div class="user-info">
+                    <img src="public/avatars/pp.svg" alt="Priya">
+                    <div>
+                        <h4>Priya Patel</h4>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card1">
+                <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+                <p class="testimonial-text">Smooth booking for our Goa trip. Zero hassles with the hotel or the car
+                    rental.</p>
+                <div class="user-info">
+                    <img src="public/avatars/vs.svg" alt="Vikram">
+                    <div>
+                        <h4>Vikram Singh</h4>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card1">
+                <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+                <p class="testimonial-text">Excellent service! The guides in Hampi were so knowledgeable and friendly.
+                </p>
+                <div class="user-info">
+                    <img src="public/avatars/dr.svg" alt="Deepika">
+                    <div>
+                        <h4>Deepika Reddy</h4>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card1">
+                <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+                <p class="testimonial-text">Thank you for making our Golden Temple visit so spiritually fulfilling and
+                    easy.</p>
+                <div class="user-info">
+                    <img src="public/avatars/sk.svg" alt="Sandeep">
+                    <div>
+                        <h4>Sandeep Kaur</h4>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card1">
+                <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+                <p class="testimonial-text">The wildlife safari in Jim Corbett was the highlight of our year! Great
+                    work.</p>
+                <div class="user-info">
+                    <img src="public/avatars/am.svg" alt="Arjun">
+                    <div>
+                        <h4>Arjun Mehta</h4>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card1">
+                <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+                <p class="testimonial-text">From Mumbai to Ladakh, every detail was handled with care. Highly recommend!
+                </p>
+                <div class="user-info">
+                    <img src="public/avatars/rd.svg" alt="Rohan">
+                    <div>
+                        <h4>Rohan Das</h4>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="gallery-section">
+        <header class="header-title">
+            <span class="subtitle">instagram :</span>
+            <h1>TRAVEL GALLERIES</h1>
+        </header>
+
+
+        <div class="gallery-wrapper">
+            <div class="gallery-track">
+
+                <img src="public/gallery/01.jpeg">
+                <img src="public/gallery/02.jpeg">
+                <img src="public/gallery/03.jpeg">
+                <img src="public/gallery/04.jpeg">
+                <img src="public/gallery/05.jpeg">
+                <img src="public/gallery/06.jpeg">
+                <img src="public/gallery/01.jpeg">
+                <img src="public/gallery/02.jpeg">
+                <img src="public/gallery/03.jpeg">
+                <img src="public/gallery/04.jpeg">
+                <img src="public/gallery/05.jpeg">
+                <img src="public/gallery/06.jpeg">
+                <img src="public/gallery/01.jpeg">
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" id="footer">
+        <div class="footer-wrap">
+
+
+            <div class="footer-col">
+                <img src="public/logo/logob.png" class="footer-logo" alt="logo">
+                <p class="footer-text">
+                    Discover the world with curated journeys, unforgettable experiences,
+                    and memories that last a lifetime.
+                </p>
+            </div>
+
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#about-us">About Us</a></li>
+                    <li><a href="#travel">Travel Spots</a></li>
+                    <li><a href="#">Blogs</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <ul>
+                    <li>Adventure Tours</li>
+                    <li>Luxury Travel</li>
+                    <li>Honeymoon</li>
+                    <li>Family Trips</li>
+                </ul>
+            </div>
+
+
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <div class="footer-social">
+                    <i class="bi bi-facebook"></i>
+                    <i class="bi bi-instagram"></i>
+                    <i class="bi bi-twitter-x"></i>
+                    <i class="bi bi-youtube"></i>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 Globe Trek. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
