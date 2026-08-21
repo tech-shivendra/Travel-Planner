@@ -37,6 +37,16 @@
     top: 0;
     z-index: 10;
 }
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+.nav-toggle {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    margin-left: 15px;
+}
 .navs span {
    cursor: pointer;
 }
@@ -94,7 +104,8 @@
 }
 .hero-title{
     padding-top:200px;
-    font-size: 13rem;
+    font-size: clamp(3.5rem, 15vw, 13rem);
+    text-align: center;
     padding-bottom: 0;
     font-weight: 700;
     color:var(--bg);
@@ -113,17 +124,16 @@
 }
 .subtitle0{
     font-family: 'Playfair Display', serif;
-        font-style: italic;
-    font-size: 2.2rem;
+    font-style: italic;
+    font-size: clamp(1.2rem, 4vw, 2.2rem);
     text-align: center;
-    
     padding-top: 0 ;
     color: yellow;
 }
 .word-reveal-js span{
     display: inline-block;
     opacity: 0;
-    font-size: 2.5rem;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
     transform: translateY(15px);
     animation: wordFade 1s ease forwards ;
 }
@@ -608,8 +618,10 @@
         }
 
         .image-col img {
-            width: 600px;
-            height: 400px;
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            aspect-ratio: 3 / 2;
             object-fit: cover;
             display: block;
             transition: transform 1.2s var(--curve);
@@ -848,4 +860,147 @@
 .footer-wrap a{
     color: var(--text);
     text-decoration: none;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 900px) {
+    .footer-wrap {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+    .footer-logo {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Navigation */
+    .nav-toggle {
+        display: block;
+        color: white;
+    }
+    
+    .navs {
+        position: fixed;
+        top: 10vh;
+        left: -100%;
+        width: 280px;
+        height: 90vh;
+        background-color: rgba(18, 18, 18, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 40px 30px;
+        gap: 25px;
+        transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 99;
+        box-shadow: 5px 0 25px rgba(0,0,0,0.5);
+        border-right: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .navs.active {
+        left: 0;
+    }
+    
+    .navs span {
+        margin-right: 0;
+        width: 100%;
+    }
+    
+    .navs span a {
+        font-size: 1.15rem;
+        display: block;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        color: rgba(255, 255, 255, 0.9);
+        transition: color 0.3s ease, padding-left 0.3s ease;
+    }
+    
+    .navs span a:hover {
+        color: var(--primary);
+        padding-left: 8px;
+    }
+
+    /* Hero Section */
+    .hero-title {
+        padding-top: 150px;
+    }
+    
+    /* About Us & Values */
+    .about-section, .values-section {
+        padding: 50px 24px;
+        top: 0;
+    }
+    
+    .about-image img {
+        width: 100%;
+        max-width: 320px;
+        height: auto;
+    }
+
+    .parallax-separator {
+        height: 25vh;
+        top: 0;
+    }
+
+    /* Testimonials */
+    .testimonials header {
+        margin-top: 0;
+        margin-bottom: 40px;
+    }
+    
+    .card-container {
+        padding: 20px 10px;
+        margin-top: 0;
+        gap: 16px;
+    }
+    
+    .card1 {
+        width: 100%;
+        max-width: 320px;
+        margin-bottom: 16px;
+        animation: none; /* Disable float animation to save layout battery & layout shift */
+    }
+    
+    .testimonials {
+        padding: 40px 16px;
+    }
+}
+
+@media (max-width: 500px) {
+    .nav {
+        padding: 0 15px;
+    }
+    
+    .nav-right .button {
+        display: none; /* Hide 'Book Now' on tiny screens to fit search/profile icons */
+    }
+    
+    .footer-wrap {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+    
+    .footer-logo {
+        margin: 0 auto 20px;
+        display: block;
+    }
+    
+    .footer-social {
+        justify-content: center;
+        display: flex;
+    }
+    
+    .footer-social i {
+        margin: 0 10px;
+    }
+    
+    .explore-btn {
+        margin-top: 50px;
+        width: 160px;
+        padding: 12px 18px;
+    }
 }
