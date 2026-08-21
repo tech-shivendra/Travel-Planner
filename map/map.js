@@ -75,28 +75,50 @@ function updateUI(data) {
 
 
 
-function loadCityImage(city) {
-  const img = document.getElementById("cityImage");
-  if (!img) return;
-
+function fetchUnsplashPhoto(queries, orientation, callback) {
+  if (!queries || queries.length === 0) return;
+  const currentQuery = queries[0];
   fetch(
-    `https://api.unsplash.com/search/photos?query=${city} street landmark&orientation=squarish&per_page=5&client_id=${UNSPLASH_KEY}`
+    `https://api.unsplash.com/search/photos?query=${encodeURIComponent(currentQuery)}&orientation=${orientation}&per_page=5&client_id=${UNSPLASH_KEY}`
   )
     .then(res => res.json())
     .then(data => {
       if (data && data.results && data.results.length > 0) {
-        if (data.results.length > 1) {
-          img.src = data.results[1].urls.regular;
-        } else {
-          img.src = data.results[0].urls.regular;
-        }
+        callback(data.results);
+      } else if (queries.length > 1) {
+        console.log(`Unsplash query "${currentQuery}" returned 0 results. Trying fallback: "${queries[1]}"`);
+        fetchUnsplashPhoto(queries.slice(1), orientation, callback);
       } else if (data && data.errors) {
         console.error("Unsplash API Error:", data.errors);
       }
     })
-    .catch(err => console.error("Error fetching city image:", err));
+    .catch(err => {
+      console.error(`Error fetching query "${currentQuery}":`, err);
+      if (queries.length > 1) {
+        fetchUnsplashPhoto(queries.slice(1), orientation, callback);
+      }
+    });
 }
 
+function loadCityImage(city) {
+  const img = document.getElementById("cityImage");
+  if (!img) return;
+
+  const queries = [
+    `${city} street landmark`,
+    `${city} landmark`,
+    `${city} tourism`,
+    city
+  ];
+
+  fetchUnsplashPhoto(queries, "squarish", (results) => {
+    if (results.length > 1) {
+      img.src = results[1].urls.regular;
+    } else {
+      img.src = results[0].urls.regular;
+    }
+  });
+}
 
 function loadMap(lat, lon) {
   map.src =
@@ -148,32 +170,28 @@ cityInput.addEventListener("input", () => {
 
 
 function setBackgroundImage(city, condition) {
-  let query = `${city} skyline`;
+  let weatherModifier = "";
+  if (condition.includes("Rain")) weatherModifier = " rain";
+  else if (condition.includes("Snow")) weatherModifier = " snow";
+  else if (condition.includes("Clear")) weatherModifier = " sunny";
 
-  if (condition.includes("Rain")) query += " rain";
-  if (condition.includes("Snow")) query += " snow";
-  if (condition.includes("Clear")) query += " sunny";
+  const queries = [
+    `${city} skyline${weatherModifier}`,
+    `${city} landscape`,
+    city
+  ];
 
-  fetch(
-    `https://api.unsplash.com/search/photos?query=${query}&orientation=landscape&per_page=5&client_id=${UNSPLASH_KEY}`
-  )
-    .then(res => res.json())
-    .then(data => {
-      if (data && data.results && data.results.length > 0) {
-        const imgUrl = data.results[0].urls.full;
-        const hero = document.querySelector(".weather-hero");
-
-        const img = new Image();
-
-        img.src = imgUrl;
-        img.onload = () => {
-          hero.style.backgroundImage = `url('${imgUrl}')`;
-        };
-      } else if (data && data.errors) {
-        console.error("Unsplash Background API Error:", data.errors);
-      }
-    })
-    .catch(err => console.error("Error fetching background image:", err));
+  fetchUnsplashPhoto(queries, "landscape", (results) => {
+    const imgUrl = results[0].urls.full;
+    const bg = document.querySelector(".parallax-bg");
+    if (bg) {
+      const img = new Image();
+      img.src = imgUrl;
+      img.onload = () => {
+        bg.style.backgroundImage = `url('${imgUrl}')`;
+      };
+    }
+  });
 }
 
 window.addEventListener("scroll", () => {
