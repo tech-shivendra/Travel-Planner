@@ -1,5 +1,5 @@
-const apiKey = "3ded56c8b1cb001dbbde7e938ef4dc19";
-const UNSPLASH_KEY = "pFh-UroCVxjqPoVkeNCXrUZ8lGw6500WlTqV_tHZxGI";
+const apiKey = "3JOap5TpIketecadbwVA6xv5dxfXa-Jt1d8SxSCgF0c";
+const UNSPLASH_KEY = "-3SJtL3n0bJ_jBZL2WqtvlzI38qPPH3k-CmD026pK80";
 const GEO_API_KEY = "233477e77c6ed0d33a21f717c0a8a50c";
 
 let manualOverride = false;
