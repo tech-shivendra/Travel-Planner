@@ -75,13 +75,33 @@ function updateUI(data) {
 
 
 
+function showDebugError(msg, isSuccess = false) {
+  const card = document.querySelector(".city-image-card");
+  if (card) {
+    let errDiv = document.getElementById("imageDebugInfo");
+    if (!errDiv) {
+      errDiv = document.createElement("div");
+      errDiv.id = "imageDebugInfo";
+      card.style.position = "relative";
+      card.appendChild(errDiv);
+    }
+    errDiv.style.cssText = `position:absolute; bottom:10px; left:10px; background:rgba(0,0,0,0.85); color:${isSuccess ? '#55ff55' : '#ff5555'}; padding:8px 12px; border-radius:8px; font-size:11px; z-index:100; word-break:break-all; max-width:90%; border:1px solid ${isSuccess ? '#55ff55' : '#ff5555'};`;
+    errDiv.innerText = msg;
+  }
+}
+
 function fetchUnsplashPhoto(queries, orientation, callback) {
   if (!queries || queries.length === 0) return;
   const currentQuery = queries[0];
   fetch(
     `https://api.unsplash.com/search/photos?query=${encodeURIComponent(currentQuery)}&orientation=${orientation}&per_page=5&client_id=${UNSPLASH_KEY}`
   )
-    .then(res => res.json())
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+      }
+      return res.json();
+    })
     .then(data => {
       if (data && data.results && data.results.length > 0) {
         callback(data.results);
@@ -89,13 +109,17 @@ function fetchUnsplashPhoto(queries, orientation, callback) {
         console.log(`Unsplash query "${currentQuery}" returned 0 results. Trying fallback: "${queries[1]}"`);
         fetchUnsplashPhoto(queries.slice(1), orientation, callback);
       } else if (data && data.errors) {
-        console.error("Unsplash API Error:", data.errors);
+        showDebugError(`Unsplash API Error: ${JSON.stringify(data.errors)}`);
+      } else {
+        showDebugError(`No results found for any queries.`);
       }
     })
     .catch(err => {
       console.error(`Error fetching query "${currentQuery}":`, err);
       if (queries.length > 1) {
         fetchUnsplashPhoto(queries.slice(1), orientation, callback);
+      } else {
+        showDebugError(`Unsplash fetch failed: ${err.message}`);
       }
     });
 }
@@ -103,6 +127,11 @@ function fetchUnsplashPhoto(queries, orientation, callback) {
 function loadCityImage(city) {
   const img = document.getElementById("cityImage");
   if (!img) return;
+
+  // Add error listener to img to catch image loading failure (e.g. invalid URL, block, etc)
+  img.onerror = function() {
+    showDebugError(`Browser failed to load image src: ${this.src}`);
+  };
 
   const queries = [
     `${city} street landmark`,
@@ -112,11 +141,14 @@ function loadCityImage(city) {
   ];
 
   fetchUnsplashPhoto(queries, "squarish", (results) => {
+    let srcUrl = "";
     if (results.length > 1) {
-      img.src = results[1].urls.regular;
+      srcUrl = results[1].urls.regular;
     } else {
-      img.src = results[0].urls.regular;
+      srcUrl = results[0].urls.regular;
     }
+    img.src = srcUrl;
+    showDebugError(`Success! Loaded image.`, true);
   });
 }
 
