@@ -76,17 +76,25 @@ function updateUI(data) {
 
 
 function loadCityImage(city) {
+  const img = document.getElementById("cityImage");
+  if (!img) return;
+
   fetch(
     `https://api.unsplash.com/search/photos?query=${city} street landmark&orientation=squarish&per_page=5&client_id=${UNSPLASH_KEY}`
   )
     .then(res => res.json())
     .then(data => {
-      if (data.results.length > 1) {
-        cityimage.src = data.results[1].urls.regular;
-      } else if (data.results.length) {
-        cityImage.src = data.results[0].urls.regular;
+      if (data && data.results && data.results.length > 0) {
+        if (data.results.length > 1) {
+          img.src = data.results[1].urls.regular;
+        } else {
+          img.src = data.results[0].urls.regular;
+        }
+      } else if (data && data.errors) {
+        console.error("Unsplash API Error:", data.errors);
       }
-    });
+    })
+    .catch(err => console.error("Error fetching city image:", err));
 }
 
 
@@ -151,7 +159,7 @@ function setBackgroundImage(city, condition) {
   )
     .then(res => res.json())
     .then(data => {
-      if (data.results.length) {
+      if (data && data.results && data.results.length > 0) {
         const imgUrl = data.results[0].urls.full;
         const hero = document.querySelector(".weather-hero");
 
@@ -161,8 +169,11 @@ function setBackgroundImage(city, condition) {
         img.onload = () => {
           hero.style.backgroundImage = `url('${imgUrl}')`;
         };
+      } else if (data && data.errors) {
+        console.error("Unsplash Background API Error:", data.errors);
       }
-    });
+    })
+    .catch(err => console.error("Error fetching background image:", err));
 }
 
 window.addEventListener("scroll", () => {
